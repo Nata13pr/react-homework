@@ -1,5 +1,6 @@
 import React,{FC,ReactNode} from 'react';
 import IProduct from "../../Model/IProduct";
+import ListOfImages from '../ListOfImages/ListOfImages';
 
 interface IProps{
     product:IProduct
@@ -19,7 +20,8 @@ const {title,rating,brand,thumbnail,description,category,price,images,stock,disc
             <p>Brand - {brand}</p>
             <p>Stock - {stock}</p>
             <img src={thumbnail} alt={thumbnail}/>
-            <ListOfImage/>
+            {/*<ListOfImages/>*/}
+            <ListOfImages />
         </li>
     );
 };
