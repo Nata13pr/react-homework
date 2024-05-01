@@ -1,10 +1,17 @@
-import React from 'react';
+import React,{FC} from 'react';
+import Image from '../Image/Image';
+import styles from '../ListOfImages/ListOfImages.module.css'
 
-const ListOfImages = () => {
+interface IProps{
+    images:string[],
+}
+
+type ListOfImagesWithChildren<T>=T & {children?:React.ReactNode}
+const ListOfImages:FC<ListOfImagesWithChildren<IProps>> = ({images}) => {
     return (
-        <div>
-            
-        </div>
+        <ul className={styles.flex}>
+            {images.map(image=> <Image  image={image} key={image}/>)}
+        </ul>
     );
 };
 
