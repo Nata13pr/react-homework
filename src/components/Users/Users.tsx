@@ -5,6 +5,7 @@ import IUserPostModel from '../../Models/IUserPostModel'
 import {getAllUsers, getAllPostByUserId} from '../../services/users.api.service';
 import User from '../User/User';
 import Posts from '../Posts/Posts';
+import styles from '../Users/users.module.css'
 
 const Users: FC = () => {
     const [users, setUsers] = useState<IUserModel[]>([]);
@@ -21,13 +22,13 @@ const Users: FC = () => {
 
     return (
         <>
-            <ul>
+            <ul className={styles.flex}>
                 {
                     users.map((user) => <User key={user.id} user={user} handleButtonClick={handleButtonClick}/>)
                 }
-                <Posts posts={posts}/>
             </ul>
-
+            <h2>POST</h2>
+            <Posts posts={posts}/>
         </>
 
     );

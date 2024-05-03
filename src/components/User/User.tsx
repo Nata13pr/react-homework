@@ -20,7 +20,7 @@ const User: FC<UserWithChildren<IProps>> = ({user, handleButtonClick}) => {
             <p>Phone - {user.phone}</p>
             <p>Password - {user.password}</p>
             <p>Birthdate - {user.birthDate}</p>
-            <img src={user.image} alt={user.firstName}/>
+            <img src={user.image} alt={user.firstName} width={`150px`}/>
             <p>Blod group - {user.bloodGroup}</p>
             <p>Weight - {user.weight}</p>
             <p>Height - {user.height}</p>
