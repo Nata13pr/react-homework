@@ -25,7 +25,7 @@ const User: FC<UserWithChildren<IProps>> = ({user, handleButtonClick}) => {
             <p>Weight - {user.weight}</p>
             <p>Height - {user.height}</p>
             <p>Eye color - {user.eyeColor}</p>
-            <button onClick={()=>handleButtonClick(user.id)}>Add posts of {user.lastName} user</button>
+            <button onClick={() => handleButtonClick(user.id)}>Add posts of {user.lastName} user</button>
         </li>
     );
 };

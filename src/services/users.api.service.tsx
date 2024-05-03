@@ -17,4 +17,4 @@ const getAllPostByUserId = (id: number): Promise<AxiosResponse<IUserPostResponse
     return axiosInstance.get(`users/${id}/posts`)
 }
 
-export {getAllUsers,getAllPostByUserId};
+export {getAllUsers, getAllPostByUserId};

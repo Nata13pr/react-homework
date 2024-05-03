@@ -15,7 +15,7 @@ const Post: FC<PostWithChildren<IProps>> = ({body, title, tags, rections}) => {
             <p>Body - {body}</p>
             <p>Reactions - {rections}</p>
             <ul>
-                {tags.map(tag=><li key={tag}>{tag}</li>)}
+                {tags.map(tag => <li key={tag}>{tag}</li>)}
             </ul>
         </li>
     );
