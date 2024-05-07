@@ -1,6 +1,6 @@
 import axios, {AxiosResponse} from "axios";
-import IUserResponseModel from '../Models/IUserResponseModel'
-import IUserPostResponseModel from "../Models/IUserPostResponseModel";
+import IUserResponseModel from '../models/IUserResponseModel'
+import IUserPostResponseModel from "../models/IUserPostResponseModel";
 
 let axiosInstance = axios.create({
     baseURL: 'https://dummyjson.com',

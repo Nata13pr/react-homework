@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 
-import IUserPostModel from '../../Models/IUserPostModel'
+import IUserPostModel from '../../models/IUserPostModel'
 import Post from '../Post/Post';
 
 interface IProps {

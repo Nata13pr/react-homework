@@ -1,7 +1,7 @@
 import React, {useState, useEffect, FC} from 'react';
 
-import IUserModel from '../../Models/IUserModel';
-import IUserPostModel from '../../Models/IUserPostModel'
+import IUserModel from '../../models/IUserModel';
+import IUserPostModel from '../../models/IUserPostModel'
 import {getAllUsers, getAllPostByUserId} from '../../services/users.api.service';
 import User from '../User/User';
 import Posts from '../Posts/Posts';
