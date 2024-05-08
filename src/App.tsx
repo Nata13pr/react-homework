@@ -6,7 +6,9 @@ import './App.css';
 function App() {
   const [value,toggleValue]=useToggle(true)
   // trueoggleValue(false)
-
+function handleTogle(){
+    toggleValue(true)
+}
   return (
     <div className="App">
 

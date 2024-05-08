@@ -4,7 +4,10 @@ const useToggle=(initialValue:boolean)=>{
     const [value,setValue]=useState(initialValue);
 
     function toggleValue(valueState:boolean){
-        setValue(prevValue=>!valueState)
+        setValue(prevValue=>{
+            console.log(prevValue)
+            return !valueState
+        })
     }
     return [value,toggleValue]
 }
