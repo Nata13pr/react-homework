@@ -21,6 +21,7 @@
 
 import React from 'react';
 import useToggle from '../src/hooks/useToggle';
+import usePrevious from '../src/hooks/usePrevious'
 
 import './App.css';
 
@@ -32,7 +33,9 @@ function App() {
          toggleValue(false);
         console.log('heelllll')
     }
-
+    const number=usePrevious<number>(100);
+    
+    console.log(number)
     return (
         <div className="App">
             <button onClick={()=>handleToggle()}>{Number(value)}</button>
