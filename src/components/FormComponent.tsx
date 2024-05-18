@@ -4,7 +4,7 @@ import {joiResolver} from '@hookform/resolvers/joi';
 import {userValidator} from "../validators/user.validator";
 import {IPost} from '../models/IPost';
 import {addPost} from './../services/users.api.service';
-import {v4 as uuidv4} from 'uuid';
+
 
 const FormComponent: FC = () => {
     const [id, setId] = useState<number>(0)
@@ -14,8 +14,7 @@ const FormComponent: FC = () => {
     });
 
     const save = (formValues: IPost) => {
-        const id = Number(uuidv4());
-        addPost({...formValues, id})
+        addPost({...formValues})
             .then((json) => console.log(json));
     }
     return (
