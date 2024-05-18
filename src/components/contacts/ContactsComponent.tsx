@@ -7,7 +7,7 @@ const ContactsComponent:FC = () => {
     const [contacts, setContacts] = useState<IUserContactModel[]>();
 
     useEffect(() => {
-        userApiService.getAllUser()
+        userApiService.getAllUsers()
             .then(value => setContacts(value.data))
     }, []);
     return (
