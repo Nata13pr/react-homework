@@ -27,7 +27,7 @@ const PostsComponent: FC = () => {
 
     return (
         <ul>
-            {posts.map(post => <PostPage key={post.id} post={post}></PostPage>)}
+            {posts.map(post => <PostPage key={post.id} post={post}/>)}
         </ul>
     );
 };

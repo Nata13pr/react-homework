@@ -12,7 +12,7 @@ const CommentsComponent: FC = () => {
     }, []);
     return (
         <ul>
-            {comments.map(comment => <CommentPage key={comment.id} comment={comment}></CommentPage>)}
+            {comments.map(comment => <CommentPage key={comment.id} comment={comment}/>)}
         </ul>
     );
 };
