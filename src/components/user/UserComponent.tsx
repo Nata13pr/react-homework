@@ -7,11 +7,12 @@ interface IProps{
 }
 const UserComponent:FC<IProps> = ({user}) => {
     const navigate=useNavigate();
+    console.log(user.id.toString())
     return (
         <div>
             {user.name}
             <button onClick={()=>{
-                navigate(user.id.toString(),{state:{foo:'footbar'}})
+                navigate(`/posts?userId=${user.id.toString()}`,{state:{foo:'footbar'}})
             }}>
                 Show posts of this user
             </button>

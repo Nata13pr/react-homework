@@ -1,26 +1,40 @@
-import axios, { AxiosResponse } from "axios"
-import { IUserModel } from "../model/IUserModel"
-import { IPostModel } from "../model/IPostModel"
+import axios, {AxiosResponse} from "axios"
+import {IUserModel} from "../model/IUserModel"
+import {IPostModel} from "../model/IPostModel"
+import {ICommentModel} from "../model/ICommentModel"
 
-let axiosInstance=axios.create({
-    baseURL:'https://jsonplaceholder.typicode.com',
-    headers:{
+let axiosInstance = axios.create({
+    baseURL: 'https://jsonplaceholder.typicode.com',
+    headers: {
         'Content-Type': 'application/json'
     }
 })
 
-const userApiService= {
-    getAllUsers:():Promise<AxiosResponse<IUserModel[]>> => {
+const userApiService = {
+    getAllUsers: (): Promise<AxiosResponse<IUserModel[]>> => {
         return axiosInstance.get('/users')
     },
-    getUserByUserId:(userId:string):Promise<AxiosResponse<IUserModel>> => {
+    getUserByUserId: (userId: string): Promise<AxiosResponse<IUserModel>> => {
         return axiosInstance.get(`/users/${userId}`)
     },
-    getPostsOfUser:(userId:string):Promise<AxiosResponse<IPostModel[]>> => {
+    getPostsOfUser: (userId: string): Promise<AxiosResponse<IPostModel[]>> => {
         return axiosInstance.get(`/users/${userId}/posts`)
+    }
+}
+const postApiService = {
+    getAll: (): Promise<AxiosResponse<IPostModel[]>> => {
+        return axiosInstance.get('/posts')
+    }
+}
+
+const commentApiService = {
+    getAll: (): Promise<AxiosResponse<ICommentModel[]>> => {
+        return axiosInstance.get('/comments')
     }
 }
 
 export {
-    userApiService
+    userApiService,
+    postApiService,
+    commentApiService
 }

@@ -1,10 +1,19 @@
-import React from 'react';
+import React, {useEffect, useState } from 'react';
+import { commentApiService } from '../../services/api.service';
+import { ICommentModel } from '../../model/ICommentModel';
+import CommentComponent from '../comment/CommentComponent';
 
 const CommentsComponent = () => {
+    const [comments,setComments]=useState<ICommentModel[]>([]);
+
+    useEffect(() => {
+        commentApiService.getAll()
+            .then(value => setComments(value.data))
+    }, []);
     return (
-        <div>
-            CommentsComponent
-        </div>
+        <ul>
+            {comments.map(comment=><CommentComponent key={comment.id} comment={comment}/>)}
+        </ul>
     );
 };
 

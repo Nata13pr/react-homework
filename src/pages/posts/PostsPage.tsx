@@ -1,9 +1,10 @@
 import React from 'react';
+import PostsComponent from '../../components/posts/PostsComponent';
 
 const PostsPage = () => {
     return (
         <div>
-            Posts
+            <PostsComponent/>
         </div>
     );
 };

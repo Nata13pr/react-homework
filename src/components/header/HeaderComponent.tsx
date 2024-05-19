@@ -6,6 +6,8 @@ const HeaderComponent = () => {
         <div>
             <NavLink to={'/'}>Home</NavLink>
             <NavLink to={'users'}>Users</NavLink>
+            <NavLink to={'comments'}>Comments</NavLink>
+            <NavLink to={'posts'}>Posts</NavLink>
         </div>
     );
 };
