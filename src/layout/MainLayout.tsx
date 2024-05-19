@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
-import FooterComponent from '../components/footer/FooterComponent';
 import {Outlet} from 'react-router-dom';
+
+import FooterComponent from '../components/footer/FooterComponent';
 import HeaderComponent from '../components/header/HeaderComponent';
 
 const MainLayout: FC = () => {

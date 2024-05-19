@@ -1,18 +1,19 @@
-import React,{FC} from 'react';
-import { IUserModel } from '../../model/IUserModel';
-import { useNavigate } from 'react-router-dom';
+import React, {FC} from 'react';
 
-interface IProps{
-    user:IUserModel
+import {IUserModel} from '../../model/IUserModel';
+import {useNavigate} from 'react-router-dom';
+
+interface IProps {
+    user: IUserModel
 }
-const UserComponent:FC<IProps> = ({user}) => {
-    const navigate=useNavigate();
-    console.log(user.id.toString())
+
+const UserComponent: FC<IProps> = ({user}) => {
+    const navigate = useNavigate();
     return (
         <div>
             {user.name}
-            <button onClick={()=>{
-                navigate(`/posts?userId=${user.id.toString()}`,{state:{foo:'footbar'}})
+            <button onClick={() => {
+                navigate(`${user.id.toString()}/posts`, {state: {user}})
             }}>
                 Show posts of this user
             </button>

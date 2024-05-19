@@ -1,12 +1,12 @@
 import React, {FC} from 'react';
 
-import {ICommentModel} from '../../model/ICommentModel';
+import {ICommentModel} from '../../model/ICommentModel'
 
 interface IProps {
     comment: ICommentModel
 }
 
-const CommentComponent: FC<IProps> = ({comment}) => {
+const PostCommentComponent: FC<IProps> = ({comment}) => {
     return (
         <li>
             <h2>{comment.name}</h2>
@@ -16,4 +16,4 @@ const CommentComponent: FC<IProps> = ({comment}) => {
     );
 };
 
-export default CommentComponent;
+export default PostCommentComponent;

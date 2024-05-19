@@ -1,12 +1,11 @@
-import React,{useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
-import { IPostModel } from '../../model/IPostModel';
-import { postApiService } from '../../services/api.service';
+import {IPostModel} from '../../model/IPostModel';
+import {postApiService} from '../../services/api.service';
 import PostComponent from '../post/PostComponent';
 
 const PostsComponent = () => {
-    const [posts,setPosts]=useState<IPostModel[]>([])
-    console.log(posts)
+    const [posts, setPosts] = useState<IPostModel[]>([])
 
     useEffect(() => {
         postApiService.getAll()
@@ -15,7 +14,7 @@ const PostsComponent = () => {
 
     return (
         <ul>
-            {posts.map(post=><PostComponent key={post.id} post={post}/>)}
+            {posts.map(post => <PostComponent key={post.id} post={post}/>)}
         </ul>
     );
 };

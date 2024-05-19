@@ -1,6 +1,6 @@
-export interface ICommentModel{
-    name:string,
-    email:string,
-    body:string,
-    id:number
+export interface ICommentModel {
+    name: string,
+    email: string,
+    body: string,
+    id: number
 }
