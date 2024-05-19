@@ -20,15 +20,15 @@ const browserRouter=createBrowserRouter([
         errorElement:<ErrorLayout/>,
         children:[
             {
-                path:'about',
+                path:'/about',
                 element:<AboutPage/>
             },
             {
-                path:'contacts',
+                path:'/contacts',
                 element:<ContactsPage/>
             },
             {
-                path:'contacts/:id',
+                path:'/contacts/:id',
                 element: <SingleContactPage/>
             },
             {

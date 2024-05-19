@@ -6,13 +6,19 @@ const ContactComponent:FC<any> = ({contact}) => {
     const navigate=useNavigate();
 
     const onClickNavigateHandler=()=>{
-        navigate(contact.id.toString(),{state:{contact}})
+        console.log(contact.id.toString())
+        navigate(
+            // "/contacts/" + contact.id.toString(),
+            `/contacts/${contact.id.toString()}`,
+            // contact.id.toString(),
+            {state:{contact}}
+        )
     }
     return (
         <div>
 
             {contact.email}
-            <NavLink to={contact.id.toString()}>details</NavLink>
+            <NavLink to={`/contacts/${contact.id.toString()}`}>details</NavLink>
         <button onClick={onClickNavigateHandler}>details by button</button>
         </div>
     );
