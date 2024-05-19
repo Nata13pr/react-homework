@@ -1,9 +1,11 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const HeaderComponent = () => {
     return (
         <div>
-            Header
+            <NavLink to={'/'}>Home</NavLink>
+            <NavLink to={'users'}>Users</NavLink>
         </div>
     );
 };
