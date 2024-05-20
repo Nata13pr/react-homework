@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useParams, useLocation} from 'react-router-dom';
 
-import {userApiService} from '../../services/api.service';
+import {userApiService} from '../../services/user.service';
 import {IPostModel} from '../../model/IPostModel';
 import UserPostComponent from '../../components/userPost/UserPostComponent';
 import {useAppLocation} from '../../hooks/useAppLocation';

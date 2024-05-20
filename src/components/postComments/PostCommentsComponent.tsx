@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 
 import {ICommentModel} from '../../model/ICommentModel';
-import {postApiService} from '../../services/api.service';
+import {postApiService} from '../../services/post.service';
 import PostCommentComponent from '../../components/postComment/PostCommentComponent';
 import {IPostModel} from '../../model/IPostModel';
 import {useAppLocation} from '../../hooks/useAppLocation';

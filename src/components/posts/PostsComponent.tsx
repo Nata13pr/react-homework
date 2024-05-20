@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
 import {IPostModel} from '../../model/IPostModel';
-import {postApiService} from '../../services/api.service';
+import {postApiService} from '../../services/post.service';
 import PostComponent from '../post/PostComponent';
 
 const PostsComponent = () => {
