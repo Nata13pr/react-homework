@@ -17,6 +17,7 @@
     "web-vitals": "^2.1.4",
     "@reduxjs/toolkit": "^2.2.5",
     "react-redux": "^9.1.2"
+
   },
   "scripts": {
     "start": "react-scripts start",
