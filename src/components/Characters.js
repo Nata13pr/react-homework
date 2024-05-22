@@ -18,7 +18,7 @@ const Characters = () => {
     }, [page]);
 
     return (
-        <div>
+        <div style={{display: "flex", flexWrap: "wrap"}}>
             {characters.map(character => <Character key={character.id} character={character}/>)}
         </div>
     )

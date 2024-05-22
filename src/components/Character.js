@@ -6,7 +6,7 @@ const Character=({character})=>{
             <div>id:{id}</div>
             <div>name:{name}</div>
             <div>status:{status}</div>
-            <img src={image} alt={name}/>
+            <img src={image} alt={name} width={100}/>
         </div>
     )
 }

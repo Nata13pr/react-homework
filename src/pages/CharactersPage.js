@@ -3,7 +3,7 @@ import {CharacterPagination, Characters} from '../components';
 const CharactersPage = () => {
     return (
         <div>
-            <CharactersPage/>
+            <Characters/>
             <CharacterPagination/>
         </div>
     )

@@ -16,6 +16,7 @@ const CharacterPagination = () => {
 
         setQuery(value => {
             value.set('page', `${+value.get('page') + 1}`)
+            return value;
         })
     }
 
