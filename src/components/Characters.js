@@ -3,7 +3,6 @@ import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {charactersActions} from '../store';
-import {characterService} from '../services'
 import {Character} from '../components';
 
 const Characters = () => {
@@ -14,8 +13,8 @@ const Characters = () => {
     const page = query.get('page');
 
     useEffect(() => {
-        characterService.getAll(page).then(({data}) => dispatch(charactersActions.setResponse(data)))
-    }, [page]);
+       dispatch(charactersActions.getAll(page))
+    }, [page,dispatch]);
 
     return (
         <div style={{display: "flex", flexWrap: "wrap"}}>

@@ -4,6 +4,8 @@ import {useSearchParams} from 'react-router-dom';
 const CharacterPagination = () => {
     const {prevPage, nextPage} = useSelector(state => state.characters);
     const [, setQuery] = useSearchParams();
+    console.log('prev',prevPage)
+    console.log('next',nextPage)
 
     const prev = () => {
         setQuery(value => {
