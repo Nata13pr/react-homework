@@ -1,5 +1,4 @@
-import React, {FC, useEffect, useState} from 'react';
-import {useForm} from "react-hook-form";
+import React, {FC} from 'react';
 import {ICarWithAuth} from "../models/ICarWithAuth";
 import CarComponent from "./CarComponent";
 
@@ -12,9 +11,7 @@ const CarsComponent: FC<ICar> = ({cars}) => {
     return (
         <div>
             {cars.map(car =>
-                    <div>{car.brand}</div>
-
-                // <CarComponent car={car}  key={car.id}/>
+              <CarComponent car={car}  key={car.id}/>
             )}
         </div>
     );
