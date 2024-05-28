@@ -3,14 +3,19 @@ import {useForm} from "react-hook-form";
 import {ICarWithAuth} from "../models/ICarWithAuth";
 import CarComponent from "./CarComponent";
 
-interface ICar{
-    cars:ICarWithAuth[]
+interface ICar {
+    cars: ICarWithAuth[]
 }
-const CarsComponent:FC<ICar>  = ({cars}) => {
+
+const CarsComponent: FC<ICar> = ({cars}) => {
 
     return (
         <div>
-            {cars.map(car=><CarComponent car={car}  key={car.id}/>)}
+            {cars.map(car =>
+                    <div>{car.brand}</div>
+
+                // <CarComponent car={car}  key={car.id}/>
+            )}
         </div>
     );
 };
