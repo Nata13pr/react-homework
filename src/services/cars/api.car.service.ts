@@ -1,6 +1,7 @@
+import {AxiosError} from "axios";
+
 import {ICarPaginatedModel} from "../../models/ICarPaginatedModel";
 import {axiosInstance} from "../index";
-import {AxiosError} from "axios";
 import {retriveLocalStorage} from "../../utils/helpers";
 import {ITokenObtainPair} from "../../models/ITokenObtainPair";
 import {authService} from "../auth/api.auth.service";
@@ -20,16 +21,23 @@ export const carService = {
             }
         }
     },
-    create:async (data:ICreateNewCar)=>{
+    create: async (data: ICreateNewCar) => {
         try {
-            const response=await axiosInstance.post<ICarPaginatedModel>('/cars',data);
+            const response = await axiosInstance.post<ICarPaginatedModel>('/cars', data);
             return response.data;
-        }catch (e){
+        } catch (e) {
             const axiosError = e as AxiosError;
             if (axiosError?.response?.status === 401) {
                 const refreshToken = retriveLocalStorage<ITokenObtainPair>('tokenPair').refresh;
                 await authService.refresh(refreshToken);
             }
+        }
+    },
+    delete: async (id: number) => {
+        try {
+            await axiosInstance.delete('/cars/' + id);
+        } catch (e) {
+            console.log(e)
         }
     }
 }

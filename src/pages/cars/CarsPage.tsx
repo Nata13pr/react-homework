@@ -28,10 +28,24 @@ const CarsPage = () => {
 
     }, [query]);
 
+    const deleteCar = async (id: number) => {
+        try {
+            await carService.delete(id);
+            const updateCars = carsObject.items.filter(car => car.id !== id);
+            setCarsObject(prevState => ({
+                ...prevState,
+                items: updateCars
+            }))
+        } catch (e) {
+            console.log('Помилка видалення автомобілів', e)
+        }
+
+    }
+
     return (
         <div>
             <AddCarComponent/>
-            <CarsComponent cars={carsObject.items}/>
+            <CarsComponent cars={carsObject.items} deleteCar={deleteCar}/>
             <PaginationComponent next={carsObject.next} prev={carsObject.prev}/>
         </div>
     );

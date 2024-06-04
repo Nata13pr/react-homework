@@ -1,9 +1,10 @@
+import {AxiosResponse} from "axios";
+
 import {IAuthDataModel} from "../../models/IAuthDataModel";
 import {axiosInstance} from "../index";
 import {ITokenObtainPair} from "../../models/ITokenObtainPair";
-import {retriveLocalStorage, setTokens} from "../../utils/helpers";
+import {setTokens} from "../../utils/helpers";
 import {IAuthRegisterUserDataModule} from "../../models/IAuthRegisterUserDataModule";
-import {AxiosResponse} from "axios";
 
 const authService = {
     logIn: async (authData: IAuthDataModel): Promise<boolean> => {

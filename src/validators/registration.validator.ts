@@ -30,4 +30,4 @@ const userRegistrationValidator =
         confirm_password: Joi.any().valid(Joi.ref('password')).required()
     })
 
-export  default userRegistrationValidator;
+export default userRegistrationValidator;

@@ -1,4 +1,5 @@
 import {createBrowserRouter} from "react-router-dom";
+
 import MainLayout from "../layouts/main/MainLayout";
 import LogInPage from "../pages/auth/LogInPage";
 import CarsPage from "../pages/cars/CarsPage";
@@ -8,7 +9,7 @@ export const routerConfig = createBrowserRouter([
     {
         path: '/',
         element: <MainLayout/>,
-        loader:() => {
+        loader: () => {
             console.log('sdfsdfsdf')
             return null
         },

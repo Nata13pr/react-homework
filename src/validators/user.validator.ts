@@ -1,6 +1,6 @@
 import Joi from "joi";
 
- const userValidator =
+const userValidator =
     Joi.object({
         username: Joi
             .string()
@@ -30,4 +30,4 @@ import Joi from "joi";
 
     })
 
-export  default userValidator;
+export default userValidator;

@@ -1,4 +1,4 @@
-export interface IAuthRegisterUserDataModule{
+export interface IAuthRegisterUserDataModule {
     id: number,
     username: string,
     is_active: boolean,

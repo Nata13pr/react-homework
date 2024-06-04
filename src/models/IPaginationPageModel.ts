@@ -1,3 +1,3 @@
-export interface IPaginationPageModel{
-    page:string
+export interface IPaginationPageModel {
+    page: string
 }

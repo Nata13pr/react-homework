@@ -1,6 +1,7 @@
 import axios from "axios";
+
 import {baseURL} from "../utils/constants/constants";
-import {removeTokens, retriveLocalStorage} from "../utils/helpers";
+import {retriveLocalStorage} from "../utils/helpers";
 import {ITokenObtainPair} from "../models/ITokenObtainPair";
 
 export const axiosInstance = axios.create({

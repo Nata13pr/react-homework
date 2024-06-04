@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useForm} from "react-hook-form";
 import {joiResolver} from "@hookform/resolvers/joi";
-import userValidator from "../../validators/user.validator";
+
 import {IAuthDataModel} from "../../models/IAuthDataModel";
 import {authService} from "../../services/auth/api.auth.service";
 import {IAuthRegistrationDataModel} from "../../models/IAuthRegistrationDataModel";

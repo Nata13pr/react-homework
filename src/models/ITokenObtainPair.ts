@@ -1,4 +1,4 @@
-export interface ITokenObtainPair{
-    access:string,
-    refresh:string
+export interface ITokenObtainPair {
+    access: string,
+    refresh: string
 }

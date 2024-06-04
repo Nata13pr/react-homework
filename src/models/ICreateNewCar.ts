@@ -1,5 +1,5 @@
-export interface ICreateNewCar{
-    brand:string,
-    year:number,
-    price:number
+export interface ICreateNewCar {
+    brand: string,
+    year: number,
+    price: number
 }
