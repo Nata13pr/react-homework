@@ -1,4 +1,5 @@
 import {AxiosResponse} from "axios";
+
 import {IAuthDataModel} from "../../models/IAuthDataModel";
 import {IAuthRegisterUserDataModule} from "../../models/IAuthRegisterUserDataModule";
 import {ITokenObtainPair} from "../../models/ITokenObtainPair";

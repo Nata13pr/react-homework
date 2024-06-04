@@ -10,7 +10,7 @@ import {authService} from "../auth/api.auth.service";
 export const carService = {
     getCars: async () => {
         try {
-            const response = await axiosInstance.get<IAllCarsInfoModel>('/cars')
+            const response = await axiosInstance.get<IAllCarsInfoModel | undefined>('/cars')
             return response.data;
         } catch (e) {
             const axiosError = e as AxiosError;

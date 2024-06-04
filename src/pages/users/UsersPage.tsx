@@ -1,4 +1,5 @@
 import React from 'react';
+
 import RegisterFormComponent from "../../components/register-form/RegisterFormComponent";
 
 const UsersPage = () => {
