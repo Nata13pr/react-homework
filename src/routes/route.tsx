@@ -10,7 +10,6 @@ export const routerConfig = createBrowserRouter([
         path: '/',
         element: <MainLayout/>,
         loader: () => {
-            console.log('sdfsdfsdf')
             return null
         },
         children: [

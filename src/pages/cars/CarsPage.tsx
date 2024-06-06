@@ -1,14 +1,17 @@
 import React, {useEffect, useState} from 'react';
-import {useSearchParams} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 
 import CarsComponent from "../../components/cars/CarsComponent";
 import {ICarPaginatedModel} from "../../models/ICarPaginatedModel";
 import {carService} from "../../services/cars/api.car.service";
 import PaginationComponent from "../../components/pagination/PaginationComponent";
 import AddCarComponent from "../../components/car/AddCarComponent";
+import {AxiosError} from "axios";
+import {authService} from "../../services/auth/api.auth.service";
 
 
 const CarsPage = () => {
+    const navigate = useNavigate()
     const [query, setQuery] = useSearchParams();
 
     const [carsObject, setCarsObject] = useState<ICarPaginatedModel>({
@@ -20,13 +23,31 @@ const CarsPage = () => {
     })
 
     useEffect(() => {
-        carService.getCars(query.get('page') || '1').then(value => {
-            if (value) {
-                setCarsObject(value)
-            }
-        })
+        const getCarsData = async () => {
+            try {
+                const response = await carService.getCars(query.get('page') || '1');
+                if (response) {
+                    setCarsObject(response);
+                }
+            } catch (e) {
+                const axiosError = e as AxiosError;
+                if (axiosError && axiosError?.response?.status === 401) {
+                    try {
+                        await authService.refresh()
+                    } catch (e) {
+                        return navigate('/')
+                    }
 
-    }, [query]);
+                    const response = await carService.getCars(query.get('page') || '1')
+                    if (response) {
+                        setCarsObject(response);
+                    }
+                }
+            }
+        }
+        getCarsData()
+    }, [query])
+
 
     const deleteCar = async (id: number) => {
         try {
@@ -37,7 +58,19 @@ const CarsPage = () => {
                 items: updateCars
             }))
         } catch (e) {
-            console.log('Помилка видалення автомобілів', e)
+            const axiosError = e as AxiosError;
+            if (axiosError && axiosError?.response?.status === 401) {
+                try {
+                    await authService.refresh()
+                } catch (e) {
+                    return navigate('/')
+                }
+
+                const response = await carService.getCars(query.get('page') || '1')
+                if (response) {
+                    setCarsObject(response);
+                }
+            }
         }
 
     }

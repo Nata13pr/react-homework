@@ -8,6 +8,11 @@ const AddCarComponent = () => {
     const {register, handleSubmit, reset} = useForm<ICreateNewCar>();
 
     const addNewCar = async (data: ICreateNewCar) => {
+        try{
+
+        }catch (e){
+
+        }
         await carService.create({brand: data.brand, year: Number(data.year), price: Number(data.price)});
         reset();
     }

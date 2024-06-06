@@ -26,17 +26,16 @@ axiosInstance.interceptors.request.use(request => {
     return request;
 })
 
-axiosInstance.interceptors.response.use(
-    response => response,
-    ((error) => {
-        if (error.response.status === 401) {
-            // removeTokens()
-            console.log("need ref")
-        }
-
-        return error
-    })
-)
+// axiosInstance.interceptors.response.use(
+//     response => response,
+//     ((error) => {
+//         if (error.response.status === 401) {
+//             // removeTokens()
+//         }
+//
+//         return error
+//     })
+// )
 
 
 
