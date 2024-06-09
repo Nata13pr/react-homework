@@ -1,26 +1,40 @@
-import React from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {Outlet} from "react-router-dom";
+import {postService, userService} from "./services/app.service";
+import HeaderComponent from "./components/HeaderComponent";
+import {MyContext} from './context/ContextProvider';
+import {IUserModel} from "./models/IUserModel";
+import {IPostModel} from "./models/IPostModel";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App: FC = () => {
+    const [users, setUser] = useState<IUserModel[]>([])
+    const [posts, setPosts] = useState<IPostModel[]>([])
+
+    useEffect(() => {
+        userService.getUsers().then(value => setUser(value.data));
+        postService.getPosts().then(value => setPosts(value.data))
+    }, []);
+    return (
+        <>
+            <MyContext.Provider value={
+                {
+                    userStore: {
+                        allUsers: users
+                    },
+                    postStore: {
+                        allPosts: posts
+                    }
+                }
+            }>
+
+                <HeaderComponent/>
+                <Outlet/>
+
+            </MyContext.Provider>
+        </>
+    );
 }
 
 export default App;
