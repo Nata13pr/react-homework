@@ -4,24 +4,24 @@ import {UserWithPostsType} from "../models/UserWithPostsType";
 import {useContextProvider} from "../context/ContextProvider";
 
 const UserPostsPage = () => {
-
-    const {userStore: {allUsers}, postStore: {allPosts}} = useContextProvider();
-    const [userWithPostsState, setUserWithPostsState] = useState<UserWithPostsType[]>([])
-
-
-    const usersWithPostArray = useMemo(() => {
-        return allUsers.map(user => {
-            return {...user, posts: allPosts.filter(post => post.userId === user.id)}
-        })
-    }, [allPosts, allUsers]);
-
-    useEffect(() => {
-        setUserWithPostsState(usersWithPostArray)
-    }, [usersWithPostArray]);
+    //
+    // const {userStore: {allUsers}, postStore: {allPosts}} = useContextProvider();
+    // const [userWithPostsState, setUserWithPostsState] = useState<UserWithPostsType[]>([])
+    //
+    //
+    // const usersWithPostArray = useMemo(() => {
+    //     return allUsers.map(user => {
+    //         return {...user, posts: allPosts.filter(post => post.userId === user.id)}
+    //     })
+    // }, [allPosts, allUsers]);
+    //
+    // useEffect(() => {
+    //     setUserWithPostsState(usersWithPostArray)
+    // }, [usersWithPostArray]);
 
     return (
         <div>
-            <UserPostsComponent items={userWithPostsState}/>
+            <UserPostsComponent />
         </div>
     );
 };

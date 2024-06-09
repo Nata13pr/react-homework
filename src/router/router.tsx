@@ -2,9 +2,9 @@ import App from "../App";
 import UsersPage from "../UsersPage/UsersPage";
 import PostsPage from "../UsersPage/PostsPage";
 import UserPostsPage from "../UsersPage/UserPostsPage";
-import {createBrowserRouter} from "react-router-dom";
+import {createBrowserRouter, RouteObject} from "react-router-dom";
 
-const routes=[
+const routes:RouteObject[]=[
     {
         path:'',element:<App/>,children:[
             {path:'users',element:<UsersPage/>},
