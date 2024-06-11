@@ -14,11 +14,27 @@ const routes: RouteObject[] = [
         element: <MainLayout/>,
         errorElement: <ErrorLayout/>,
         children: [
-            {index: true, path: 'users', element: <UsersPage/>},
-            {path: 'posts', element: <PostsPage/>},
-            {path: 'userPosts', element: <UserPostsPage/>},
-            {path: 'comments', element: <CommentsPage/>},
-            {path: 'postComments', element: <PostCommentsPage/>}
+            {
+                index: true,
+                path: 'users',
+                element: <UsersPage/>
+            },
+            {
+                path: 'posts',
+                element: <PostsPage/>
+            },
+            {
+                path: 'userPosts',
+                element: <UserPostsPage/>
+            },
+            {
+                path: 'comments',
+                element: <CommentsPage/>
+            },
+            {
+                path: 'postComments',
+                element: <PostCommentsPage/>
+            }
         ]
     }
 ]

@@ -5,10 +5,9 @@ import HeaderComponent from "../../components/header/HeaderComponent";
 import FooterComponent from "../../components/footer/FooterComponent";
 import {IUserModel} from "../../models/IUserModel";
 import {IPostModel} from "../../models/IPostModel";
-import {postService, userService} from "../../services";
-import {Context} from "../../context/ContextProvider";
 import {ICommentModel} from "../../models/ICommentModel";
-import {commentService} from "../../services/comment/comment.service";
+import {postService, userService, commentService} from "../../services";
+import {Context} from "../../context/ContextProvider";
 
 const MainLayout = () => {
     const [users, setUsers] = useState<IUserModel[]>([]);
@@ -49,7 +48,7 @@ const MainLayout = () => {
             </Context.Provider>
 
             <hr/>
-            {favoriteUserState && <div>{favoriteUserState.email}</div>}
+            {favoriteUserState ? <div>{favoriteUserState.email}</div> : null}
             <hr/>
 
             <FooterComponent/>

@@ -1,19 +1,27 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
-const HeaderComponent = () => {
-    return (
-        <div>
-            <ul>
-                <li><Link to={'/'}>home</Link></li>
-                <li><Link to={'users'}>users page</Link></li>
-                <li><Link to={'posts'}>post page</Link></li>
-                <li><Link to={'userPosts'}>users with posts page</Link></li>
-                <li><Link to={'comments'}>comments page</Link></li>
-                <li><Link to={'postComments'}>posts with comments page</Link></li>
-            </ul>
-        </div>
-    );
-};
+const links = [
+    {link: "/", label: "home"},
+    {link: "/users", label: "users page"},
+    {link: "/posts", label: "post page"},
+    {link: "/userPosts", label: "users with posts page"},
+    {link: "/comments", label: "comments page"},
+    {link: "/postComments", label: "posts with comments page"}
+]
+
+const HeaderComponent = () => (
+    <div>
+        <ul>
+            {links.map((item, index) => (
+                <li key={index}>
+                    <Link to={item.link}>
+                        {item.label}
+                    </Link>
+                </li>
+            ))}
+        </ul>
+    </div>
+);
 
 export default HeaderComponent;

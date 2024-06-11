@@ -8,7 +8,9 @@ const PostsComponent = () => {
 
     return (
         <div>
-            {allPosts.map(post => (<PostComponent key={post.id} post={post}/>))}
+            {allPosts.map(post => (
+                <PostComponent key={post.id} post={post}/>
+            ))}
         </div>
     );
 };

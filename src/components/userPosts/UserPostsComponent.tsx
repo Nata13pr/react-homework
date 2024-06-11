@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useMemo, useState} from 'react';
+import React, {FC, useCallback, useEffect, useMemo, useState} from 'react';
 
 import {useContextProvider} from "../../context/ContextProvider";
 import {UserWithPostsType} from "../../models/UserWithPostsType";
@@ -8,13 +8,30 @@ const UserPostsComponent: FC = () => {
     const {postStore: {allPosts}, userStore: {allUsers}} = useContextProvider();
     const [userWithPostsState, setUserWithPostsState] = useState<UserWithPostsType[]>([])
 
-    const userWithPostsArray = useMemo(() => {
-        return () => {
-            return allUsers.map(user => {
-                return {...user, posts: allPosts.filter(post => post.userId === user.id)}
-            })
-        }
-    }, [allPosts, allUsers]);
+
+    const userWithPostsArray = useCallback(
+        () => allUsers.map(user => ({
+            ...user,
+            posts: allPosts.filter(post => post.userId === user.id)
+        })),
+        [allPosts, allUsers]
+    );
+
+    // const userWithPostsArray = useCallback(() => {
+    // console.log("qwe 2")
+    //     return allUsers.map(user => {
+    //         return {...user, posts: allPosts.filter(post => post.userId === user.id)}
+    //     })
+    // }, [allPosts, allUsers]);
+
+    // const userWithPostsArray = useMemo(() => {
+    //     return () => {
+    //         console.log("qwe 1")
+    //         return allUsers.map(user => {
+    //             return {...user, posts: allPosts.filter(post => post.userId === user.id)}
+    //         })
+    //     }
+    // }, [allPosts, allUsers]);
 
     useEffect(() => {
         setUserWithPostsState(userWithPostsArray)
