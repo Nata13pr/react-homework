@@ -1,7 +1,7 @@
 import App from "../App";
-import UsersPage from "../UsersPage/UsersPage";
-import PostsPage from "../UsersPage/PostsPage";
-import UserPostsPage from "../UsersPage/UserPostsPage";
+import UsersPage from "../pages/UsersPage";
+import PostsPage from "../pages/PostsPage";
+import UserPostsPage from "../pages/UserPostsPage";
 import {createBrowserRouter, RouteObject} from "react-router-dom";
 
 const routes:RouteObject[]=[
