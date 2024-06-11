@@ -11,7 +11,7 @@ const UserPostsComponent:FC= () => {
         return()=>{
             return allUsers.map(user=>{
                 return{
-                    ...user,posts:allPosts.filter(post=>post.userId=user.id)
+                    ...user,posts:allPosts.filter(post=>post.userId===user.id)
                 }
             })
         }
