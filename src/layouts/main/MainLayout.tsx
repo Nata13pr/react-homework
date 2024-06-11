@@ -20,7 +20,7 @@ const MainLayout = () => {
         userService.getUsers().then(value => setUsers(value.data));
         postService.getUsers().then(value => setPosts(value.data));
         commentService.getComments().then(value => setComments(value.data))
-    })
+    },[])
 
     const setFavoriteUser = (obj: IUserModel) => {
         setFavoriteUserState(obj)
