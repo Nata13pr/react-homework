@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {FC} from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import {useAppDispatch, useAppSelector} from "./redux/store";
+import {decrement, increment, incrementByAmount} from "./redux/slices/ccounter1Slice";
+
+const App: FC = () => {
+    const counter1ValueState = useAppSelector(state => state.counter1SliceState.value)
+    const dispatch = useAppDispatch();
+
+
+    return (
+        <div>
+            <h2>{counter1ValueState}</h2>
+            <button onClick={() => dispatch(increment())}>do increment</button>
+            <button onClick={() => dispatch(decrement())}>do decrement</button>
+            <button onClick={() => dispatch(incrementByAmount(10))}>do inc by ammount of 10</button>
+        </div>
+    );
 }
 
 export default App;
