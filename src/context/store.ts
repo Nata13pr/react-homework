@@ -1,45 +1,61 @@
+import {create} from "zustand";
+
 import {IUserModel} from "../models/IUserModel";
 import {IPostModel} from "../models/IPostModel";
 
-type StoreType={
-    userStore:{
-        allUsers:IUserModel[],
-        loadUsers:(users:IUserModel)=>void,
-        setFavoriteUser:(obj:IUserModel)=>void,
-        favoriteUser:IUserModel | null
+
+type StoreType = {
+    userStore: {
+        allUsers: IUserModel[],
+        loadUsers: (users: IUserModel[]) => void,
+        setFavoriteUser: (obj: IUserModel) => void,
+        favoriteUser: IUserModel | null
     },
-    postStore:{
-        allPosts:IPostModel[]
+    postStore: {
+        allPosts: IPostModel[],
+        loadPosts: (posts: IPostModel[]) => void,
     }
 }
 
-export const useStore=create<StoreType>()(set=>({
-    userStore:{
-        allUsers:[],
-        loadUsers:(users:IUserModel[])=>{
-            return set((state)=>{
+export const useStore = create<StoreType>()((set) => ({
+    userStore: {
+        allUsers: [],
+        loadUsers: (users: IUserModel[]) => {
+            return set((state) => {
                 return {
-                    ...state,useStore:{
-                        ...state.useStore,
-                        allUsers:users
+                    ...state,
+                    userStore: {
+                        ...state.userStore,
+                        allUsers: users
                     }
                 }
             })
         },
-        favoriteUser:null,
-        setFavoriterUser:(obj:IUserModel)=>{
-            return set(state=>{
+        favoriteUser: null,
+        setFavoriteUser: (obj: IUserModel) => {
+            return set(state => {
                 return {
                     ...state,
-                    userStore:{
-                        ...state.useStore,
-                        favoriteUser:obj
+                    userStore: {
+                        ...state.userStore,
+                        favoriteUser: obj
                     }
                 }
             })
         }
     },
-  postStore:{
-        allPosts:[]
-  }
+    postStore: {
+        allPosts: [],
+        loadPosts: (posts: IPostModel[]) => {
+            return set((state) => {
+                return {
+                    ...state,
+                    postStore: {
+                        ...state.postStore,
+                        allPosts: posts
+                    }
+                }
+            })
+        }
+    }
 }))
