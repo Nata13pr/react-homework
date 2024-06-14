@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect} from 'react';
 import './App.css';
+import {useAppDispatch, useAppSelector} from "./redux/store";
+import {postActions} from "./redux/slices/postSlice";
+import {userActions} from "./redux/slices/userSlice";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const dispatch = useAppDispatch();
+
+    const {userSlice: {users, isLoaded}, postSlice: {posts}} = useAppSelector(state => state)
+    useEffect(() => {
+        dispatch(userActions.loadUsers())
+        dispatch(postActions.loadPosts())
+    }, []);
+    return (
+        <div>
+            {
+                isLoaded ? users.map(user => <div key={user.id}>{user.name} : {
+                    user.email
+                }
+                </div>) : <h2>Loading...</h2>
+            }
+            <hr/>
+            <p>POSTS</p>
+            {
+                posts.map(post => <div key={post.id}>{post.title}</div>)
+            }
+        </div>
+    );
 }
 
 export default App;

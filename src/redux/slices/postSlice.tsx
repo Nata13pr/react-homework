@@ -7,7 +7,7 @@ type PostSliceType = {
     posts: IPost[];
 }
 
-const postInitState: PostSliceType = {
+const postsInitState: PostSliceType = {
     posts: []
 }
 
@@ -16,7 +16,7 @@ const loadPosts = createAsyncThunk(
     async (_, thunkAPI) => {
         try {
             const posts = await postService.getAll();
-            thunkAPI.fulfillWithValue(posts);
+            return thunkAPI.fulfillWithValue(posts);
         } catch (e) {
             const error = e as AxiosError;
             return thunkAPI.rejectWithValue(error.response?.data)
@@ -26,7 +26,7 @@ const loadPosts = createAsyncThunk(
 
 export const postSlice = createSlice({
     name: 'postSlice',
-    initialState: postInitState,
+    initialState: postsInitState,
     reducers: {},
     extraReducers: builder =>
         builder
@@ -34,7 +34,7 @@ export const postSlice = createSlice({
                 state.posts = action.payload;
             })
             .addCase(loadPosts.rejected, (state, action) => {
-                const error = e as AxiosError;
+
             })
 })
 
