@@ -3,52 +3,70 @@ import {createAsyncThunk, createSlice, isFulfilled, PayloadAction} from "@reduxj
 import {userService} from "../../services/api.service";
 import {AxiosError} from "axios";
 
-type UserSliceType={
-    users:IUser[],
-    isLoaded:boolean;
+type UserSliceType = {
+    users: IUser[],
+    isLoaded: boolean;
+    user: IUser | null;
 }
 
-const userInitState:UserSliceType={
-    users:[],
-    isLoaded:false,
+const userInitState: UserSliceType = {
+    users: [],
+    isLoaded: false,
+    user: null,
 }
 
-const loadUsers=createAsyncThunk(
+const loadUsers = createAsyncThunk(
     'userSlice/loadUsers',
-    async(_,thunkAPI)=>{
-        try{
-            const users=await userService.getAll();
+    async (_, thunkAPI) => {
+        try {
+            const users = await userService.getAll();
             thunkAPI.dispatch(userActions.changeLoadState(true));
             return thunkAPI.fulfillWithValue(users)
-        }catch(e){
-            const error=e as AxiosError;
+        } catch (e) {
+            const error = e as AxiosError;
             return thunkAPI.rejectWithValue(error.response?.data)
         }
     }
 )
 
-export const userSlice=createSlice({
-    name:'userSlice',
-    initialState:userInitState,
-    reducers:{
-        changeLoadState:(state,action:PayloadAction<boolean>)=>{
-            state.isLoaded=action.payload;
+const loadUserById = createAsyncThunk(
+    'userSlice/loadUserById',
+    async (_: string | undefined, thunkAPI) => {
+        try {
+            const user = await userService.getById(_);
+            return thunkAPI.fulfillWithValue(user);
+        } catch (e) {
+            const error = e as AxiosError;
+            return thunkAPI.rejectWithValue(error.response?.data);
+        }
+    }
+)
+export const userSlice = createSlice({
+    name: 'userSlice',
+    initialState: userInitState,
+    reducers: {
+        changeLoadState: (state, action: PayloadAction<boolean>) => {
+            state.isLoaded = action.payload;
         }
     },
-    extraReducers:builder =>
+    extraReducers: builder =>
         builder
-            .addCase(loadUsers.fulfilled,(state,action)=>{
-                state.users=action.payload;
+            .addCase(loadUserById.fulfilled, (state, action) => {
+                state.user = action.payload
             })
-            .addCase(loadUsers.rejected,(state,action)=>{
+            .addCase(loadUsers.fulfilled, (state, action) => {
+                state.users = action.payload;
+            })
+            .addCase(loadUsers.rejected, (state, action) => {
                 //...
             })
-            .addMatcher(isFulfilled(loadUsers),(state,action)=>{
+            .addMatcher(isFulfilled(loadUsers), (state, action) => {
                 //state.isLoaded=true-інший спосіб,щоб не писати в thunk
             })
 })
 
-export const userActions={
+export const userActions = {
     ...userSlice.actions,
-    loadUsers
+    loadUsers,
+    loadUserById
 }
