@@ -28,6 +28,7 @@ const loadUsers = createAsyncThunk(
     }
 )
 
+
 export const userSlice = createSlice({
     name: 'userSlice',
     initialState: userInitState,
@@ -45,7 +46,7 @@ export const userSlice = createSlice({
                 //
             })
             .addMatcher(isFulfilled(loadUsers), (state, action) => {
-
+                state.isLoaded = true;
             })
 })
 
