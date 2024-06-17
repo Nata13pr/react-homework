@@ -5,7 +5,8 @@ import {PostWithCommentsType} from "../../models/PostWithCommentsType";
 import PostCommentComponent from "../postComment/PostCommentComponent";
 
 const PostCommentsComponent = () => {
-    const {postSlice: {posts}, commentSlice: {comments}} = useAppSelector(state => state)
+    const {comments} = useAppSelector(state => state.commentSlice)
+    const {posts} = useAppSelector(state => state.postSlice)
     const [postWithCommentsState, setPostWithCommentsState] = useState<PostWithCommentsType[]>([]);
 
     const postWithCommentArray = useMemo(() => {

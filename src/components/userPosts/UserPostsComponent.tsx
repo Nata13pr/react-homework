@@ -5,7 +5,8 @@ import {useAppSelector} from "../../redux/store";
 import {UserWithPostsType} from "../../models/UserWithPostsType";
 
 const UserPostsComponent = () => {
-    const {postSlice: {posts}, userSlice: {users}} = useAppSelector(state => state)
+    const {users} = useAppSelector(state => state.userSlice)
+    const {posts} = useAppSelector(state => state.postSlice)
     const [userWithPostsState, setUserWithPostsState] = useState<UserWithPostsType[]>([]);
 
     const userWithPostsArray = useCallback(
